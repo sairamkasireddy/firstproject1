@@ -1,8 +1,8 @@
 pipline {
   agent any 
   
-  Stages{
-    stage( "Github Credentials  to bulid with maven")
+  stages{
+    stage( "Github Credentials  to bulid with maven"){
           steps{
             git 'https://github.com/sairamkasireddy/firstproject1.git'
           }
@@ -13,7 +13,7 @@ pipline {
             sh "mvn clean package"
             
           }
-     stage( "Deploy -Build into apache tomcat")
+      stage( "Deploy -Build into apache tomcat"){
           steps{
              sshagent(['Tomcat-pwd']) {
                

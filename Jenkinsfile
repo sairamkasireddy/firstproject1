@@ -10,6 +10,13 @@ pipeline {
             git 'https://github.com/sairamkasireddy/firstproject1.git'
           }
       }
+      stage( "Build  the file using maven"){
+          steps{
+            sh "mvn clean package"
+            sh "mv target/*.war target/myweb.war"
+            
+          }
+        }
     }
 }
           

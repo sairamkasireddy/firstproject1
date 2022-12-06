@@ -14,7 +14,7 @@ pipeline {
           steps{
             sh "mvn clean package"
             
-            
+          }
           }
         stage( "Deploy -Build into apache tomcat"){
           steps{

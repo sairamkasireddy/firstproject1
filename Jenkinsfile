@@ -23,9 +23,9 @@ pipline {
              sshagent(['Tomcat-pwd']) {
                
                sh """
-                     scp -o StrictHostKeyChecking=no target/myweb.war   Linux@172.31.91.166:/root/apache-tomcat-9.0.69/webapps/                                        
-                     ssh  Linux@172.31.91.166 /root/apache-tomcat-9.0.69/bin/shutdown.sh
-                     ssh  Linux@172.31.91.166 /root/apache-tomcat-9.0.69/bin/startup.sh
+                     scp -o StrictHostKeyChecking=no target/myweb.war   Linux@13.233.47.9:/root/apache-tomcat-9.0.69/webapps/                                        
+                     ssh  Linux@13.233.47.9 /root/apache-tomcat-9.0.69/bin/shutdown.sh
+                     ssh  Linux@13.233.47.9 /root/apache-tomcat-9.0.69/bin/startup.sh
                    """
    }
           }

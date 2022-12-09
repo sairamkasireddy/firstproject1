@@ -4,30 +4,19 @@ pipeline {
   
     stages{
     
-      stage( "Github Credentials  to bulid with maven"){
+      stage( "Github_cred"){
         
          steps{
             git 'https://github.com/sairamkasireddy/firstproject1.git'
           }
       }
-      stage( "Build  the file using maven"){
+      stage( "maven_build"){
           steps{
             sh "mvn clean package"
             
           }
           }
-        stage( "Deploy -Build into apache tomcat"){
-          steps{
-             sshagent(['Tomcat-pwd']) {
-               
-               sh """
-                     scp -o StrictHostKeyChecking=no  target/myweb.war   ec2-user@172.31.47.248:/opt/apache-tomcat-10.0.27/webapps/                                        
-                     ssh  ec2-user@172.31.47.248 /opt/apache-tomcat-10.0.27/bin/shutdown.sh
-                     ssh  ec2-user@172.31.47.248 /opt/apache-tomcat-10.0.27/bin/startup.sh
-                   """
-   }
-          }
-        }
+        
     }
 }
           

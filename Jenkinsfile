@@ -19,7 +19,7 @@ pipeline {
             
           }
           }
-      stage( "maven_build"){
+      stage( "Tomcat_deploy"){
           steps{
             sshagent(['Tomcat']) {
               sh """

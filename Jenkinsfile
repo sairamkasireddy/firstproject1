@@ -21,7 +21,7 @@ pipeline {
           }
       stage( "Tomcat_deploy"){
           steps{
-            sshagent(['Tomcat-pwd']) {
+            sshagent(['tomcat']) {
    
 
               

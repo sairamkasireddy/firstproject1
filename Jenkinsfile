@@ -7,40 +7,25 @@ pipeline {
   
     stages{
     
-      stage( "Github_cred"){
+      stage( 'Github_cred'){
         
          steps{
             git 'https://github.com/sairamkasireddy/firstproject1.git'
           }
       }
-      stage( "maven_build"){
+      stage( 'maven_build'){
           steps{
             sh "mvn clean package"
             
           }
           }
-         stage("Sonar_quality") {
+         stage('nexus artifact') {
            steps{
-            withSonarQubeEnv('sonarqube'){ 
-            sh "mvn sonar:sonar"
-          
-          }
-          }
+             nexusArtifactUploader artifacts: [[artifactId: 'demo', classifier: '', file: 'target/demo.war', type: 'war']], credentialsId: 'nexus-pwd', groupId: 'com.domain', nexusUrl: 'http://15.206.75.93:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'html-project', version: '1.0-SNAPSHOT'
+             
            
-           stage( "Tomcat_deploy"){
-          steps{
-            sshagent(['tomcat']) {
-   
-
-              
-                   sh "scp -o StrictHostKeyChecking=no  target/demo.war   ec2-user@172.31.43.171:/opt/tomcat/webapps/" 
-                  
-                   
-              
-            }
-          }
-      }
-      
+}
+}
     }
 }
 }

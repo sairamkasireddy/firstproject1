@@ -19,6 +19,13 @@ pipeline {
             
           }
           }
+       stage( "Sonar_quality"){
+          steps{
+            withSonarQubeEnv('SONAR-8.6){ 
+           
+            
+          }
+          }
       stage( "Tomcat_deploy"){
           steps{
             sshagent(['tomcat']) {
@@ -32,6 +39,7 @@ pipeline {
             }
           }
       }
+      
     }
 }
      

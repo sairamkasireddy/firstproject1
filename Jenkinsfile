@@ -21,7 +21,7 @@ pipeline {
           }
        stage( "Sonar_quality"){
           steps{
-            withSonarQubeEnv('SONAR-8.6){ 
+            withSonarQubeEnv('SONAR-8.6'){ 
            
             
           }

@@ -25,9 +25,8 @@ pipeline {
    
 
               
-                   sh "scp -o StrictHostKeyChecking=no  target/demo.war   ec2-user@13.233.140.44:/opt/tomcat/webapps/" 
-                  sh  "ssh ec2-user@13.233.140.44 /opt/tomcat/bin/shutdown.sh"
-                   sh  "ssh ec2-user@13.233.140.44 /opt/tomcat/bin/startup.sh"
+                   sh "scp -o StrictHostKeyChecking=no  target/demo.war   ec2-user@65.0.182.9:/opt/tomcat/webapps/" 
+                  
                    
               
             }

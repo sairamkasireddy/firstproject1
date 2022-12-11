@@ -19,7 +19,7 @@ pipeline {
             
           }
           }
-           stage("Sonar_quality") {
+           stage('Sonar_quality') {
            steps{
             withSonarQubeEnv('sonarqube'){ 
             sh "${mavenCMD} sonar:sonar"  

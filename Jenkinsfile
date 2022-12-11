@@ -19,14 +19,14 @@ pipeline {
             
           }
           }
-       stage( "Sonar_quality"){
-         steps{
+           stage("Sonar_quality") {
+           steps{
             withSonarQubeEnv('sonarqube'){ 
             sh "${mavenCMD} sonar:sonar"  
           
           }
           }
-      stage( "Tomcat_deploy"){
+           stage( "Tomcat_deploy"){
           steps{
             sshagent(['tomcat']) {
    

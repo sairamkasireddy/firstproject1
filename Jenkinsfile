@@ -19,6 +19,17 @@ pipeline {
             
           }
           }
+       stage( "sonarcheck"){
+          steps{
+           withSonarQubeEnv('sonarqube'){ 
+             def mavenHome = tool name: "maven-3.8.6",type:"maven"
+             def mavenCMD="${mavenHome}/bin/mvn"
+             sh "${mavenCMD} sonar:sonar"
+         
+            
+          }
+          }
+      }
      
         stage('nexus artifact') {
            steps{

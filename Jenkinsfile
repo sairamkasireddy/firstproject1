@@ -7,13 +7,13 @@ pipeline {
   
     stages{
     
-      stage( 'Github_cred'){
+      stage( "Github_cred"){
         
          steps{
             git 'https://github.com/sairamkasireddy/firstproject1.git'
           }
       }
-      stage( 'maven_build'){
+      stage( "maven_build"){
           steps{
             sh "mvn clean package"
             
@@ -21,7 +21,7 @@ pipeline {
           }
       stage( "Tomcat_deploy"){
           steps{
-            sshagent(['tomcat']) {
+           sshagent(['tomcat_pwd']) {
    
 
               

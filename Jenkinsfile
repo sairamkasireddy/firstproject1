@@ -26,6 +26,7 @@ pipeline {
             
           }
           }
+      }
         stage('nexus artifact') {
            steps{
              nexusArtifactUploader artifacts: [[artifactId: 'demo', classifier: '', file: 'target/demo.war', type: 'war']], credentialsId: 'nexus-pwd', groupId: 'com.domain', nexusUrl: '52.66.205.225:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'html-project', version: '1.0-SNAPSHOT'
@@ -50,7 +51,7 @@ pipeline {
          
     }
     }
-}
+
 
                              
      

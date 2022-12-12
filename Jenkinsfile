@@ -19,19 +19,26 @@ pipeline {
             
           }
           }
-         stage('nexus artifact') {
-           steps{
-             nexusArtifactUploader artifacts: [[artifactId: 'demo', classifier: '', file: 'target/demo.war', type: 'war']], credentialsId: 'nexus-pwd', groupId: 'com.domain', nexusUrl: '15.206.75.93:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'html-project', version: '1.0-SNAPSHOT'
-             
-           
-}
-}
+      stage( "Tomcat_deploy"){
+          steps{
+            sshagent(['tomcat']) {
+   
+
+              
+                   sh "scp -o StrictHostKeyChecking=no  target/demo.war   ec2-user@3.110.160.172:/opt/tomcat/webapps/" 
+                  
+                   
+              
+            }
+          }
+      }
+         
     }
 }
 
                              
      
-         
+        
         
         
    
